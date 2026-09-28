@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>EcoCampus Admin Dashboard</title>
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><span>♻</span><div><b>EcoCampus</b><small>ADMIN CONSOLE</small></div></div>
+  <nav>
+    <button class="nav active" data-page="overview">⌂ <span>Overview</span></button>
+    <button class="nav" data-page="bins">▣ <span>Bin Management</span></button>
+    <button class="nav" data-page="alerts">⚠ <span>Collection Alerts</span></button>
+    <button class="nav" data-page="routes">➤ <span>Route Optimization</span></button>
+    <button class="nav" data-page="sustainability">♻ <span>Sustainability</span></button>
+    <button class="nav" data-page="users">♙ <span>User Management</span></button>
+    <button class="nav" data-page="reports">▤ <span>Reports</span></button>
+    <button class="nav" data-page="settings">⚙ <span>Settings</span></button>
+  </nav>
+  <button class="logout" id="logout">↪ Logout</button>
+</aside>
+
+<main class="content">
+<header class="topbar">
+  <div><span class="live">● LIVE</span><span class="sub">Campus waste monitoring</span></div>
+  <div class="profile"><div class="avatar" id="avatar">A</div><div><b id="profileName">Admin</b><small>Administrator</small></div></div>
+</header>
+
+<section id="overview" class="page active">
+  <div class="heading"><div><p class="eyebrow">ADMIN DASHBOARD</p><h1>Campus Overview</h1><p>Monitor and manage campus waste operations in real time.</p></div><button class="primary" id="refreshBtn">↻ Refresh Data</button></div>
+  <div class="cards">
+    <div class="card kpi"><span>Total Bins</span><strong id="totalBins">0</strong><em>Across campus</em></div>
+    <div class="card kpi warning"><span>Full Bins</span><strong id="fullBins">0</strong><em>Need collection</em></div>
+    <div class="card kpi orange"><span>Pending Collections</span><strong id="pendingBins">0</strong><em>50%+ fill level</em></div>
+    <div class="card kpi green"><span>Recycling Rate</span><strong>68%</strong><em>Current campus rate</em></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card"><div class="card-title"><h2>Live Bin Monitoring</h2><button class="small" data-page-link="bins">Manage</button></div><div id="binGrid" class="bin-grid"></div></div>
+    <div class="card"><div class="card-title"><h2>Priority Alerts</h2><button class="small" data-page-link="alerts">View all</button></div><div id="alertList"></div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card"><h2>Waste Composition</h2><div class="composition"><div class="donut">68%<small>Recyclable</small></div><div><p>♻ Recyclable <b>68%</b></p><p>● General <b>22%</b></p><p>● Organic <b>10%</b></p></div></div></div>
+    <div class="card"><h2>Sustainability Impact</h2><div class="impact"><div><strong>450 kg</strong><span>Waste Collected</span></div><div><strong>305 kg</strong><span>Recyclable</span></div><div><strong>120 kg</strong><span>CO₂ Reduction</span></div></div></div>
+  </div>
+</section>
+
+<section id="bins" class="page">
+  <div class="heading"><div><p class="eyebrow">OPERATIONS</p><h1>Bin Management</h1></div><button class="primary" id="addBinBtn">＋ Add Bin</button></div>
+  <div class="card"><div class="toolbar"><input id="binSearch" placeholder="Search bin or location..."><select id="binFilter"><option value="all">All statuses</option><option value="FULL">Full</option><option value="MEDIUM">Medium</option><option value="LOW">Low</option></select></div><div class="table-wrap"><table><thead><tr><th>Bin</th><th>Location</th><th>Type</th><th>Fill</th><th>Status</th><th>Action</th></tr></thead><tbody id="binTable"></tbody></table></div></div>
+</section>
+
+<section id="alerts" class="page">
+  <div class="heading"><div><p class="eyebrow">ATTENTION REQUIRED</p><h1>Collection Alerts</h1><p>Bins at 80% or above require priority collection.</p></div></div>
+  <div id="alertsPage" class="alert-cards"></div>
+</section>
+
+<section id="routes" class="page">
+  <div class="heading"><div><p class="eyebrow">LOGISTICS</p><h1>Route Optimization</h1><p>Priority route generated from bin fill levels.</p></div><button class="primary" id="optimizeBtn">Optimize Route</button></div>
+  <div class="card"><div id="routeList" class="route-list"></div></div>
+</section>
+
+<section id="sustainability" class="page">
+  <div class="heading"><div><p class="eyebrow">IMPACT</p><h1>Sustainability</h1></div></div>
+  <div class="cards"><div class="card kpi green"><span>Waste Collected</span><strong>450 kg</strong><em>This month</em></div><div class="card kpi"><span>Recyclable Waste</span><strong>305 kg</strong><em>68% of total</em></div><div class="card kpi"><span>CO₂ Reduction</span><strong>120 kg</strong><em>Estimated impact</em></div><div class="card kpi"><span>Bins Monitored</span><strong id="sustainBins">0</strong><em>Live network</em></div></div>
+</section>
+
+<section id="users" class="page">
+  <div class="heading"><div><p class="eyebrow">PEOPLE</p><h1>User Management</h1></div><button class="primary" id="addUserBtn">＋ Add User</button></div>
+  <div class="card"><div class="table-wrap"><table><thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Created</th></tr></thead><tbody id="userTable"></tbody></table></div></div>
+</section>
+
+<section id="reports" class="page">
+  <div class="heading"><div><p class="eyebrow">ANALYTICS</p><h1>Reports</h1></div></div>
+  <div class="cards"><div class="card report-card"><h2>Collection Report</h2><p>Export all completed collection records.</p><button class="primary" id="exportCollections">Export CSV</button></div><div class="card report-card"><h2>Issue Report</h2><p>Export reported maintenance issues.</p><button class="primary" id="exportIssues">Export CSV</button></div></div>
+  <div class="card"><h2>Recent Collections</h2><div class="table-wrap"><table><thead><tr><th>Bin</th><th>Location</th><th>Collector</th><th>Time</th></tr></thead><tbody id="collectionTable"></tbody></table></div></div>
+</section>
+
+<section id="settings" class="page">
+  <div class="heading"><div><p class="eyebrow">SYSTEM</p><h1>Settings</h1></div></div>
+  <div class="card settings"><label><input type="checkbox" id="autoRefresh"> Auto-refresh dashboard every 30 seconds</label><label><input type="checkbox" id="notifications"> Enable collection notifications</label><button class="primary" id="saveSettings">Save Settings</button></div>
+</section>
+</main>
+</div>
+
+<div id="modal" class="modal"><div class="modal-box"><button class="close" id="closeModal">×</button><h2 id="modalTitle">Add Bin</h2><form id="modalForm"></form></div></div>
+<div id="toast" class="toast"></div>
+<script src="admin.js"></script>
+</body>
+</html>

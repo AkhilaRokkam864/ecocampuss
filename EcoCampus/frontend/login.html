@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EcoCampus - Login</title>
+
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+<div class="login-container">
+
+    <!-- LEFT SIDE -->
+    <div class="login-left">
+
+        <div class="brand">
+            <div class="brand-icon">♻</div>
+
+            <div>
+                <h1>EcoCampus</h1>
+                <p>Smart Waste Management</p>
+            </div>
+        </div>
+
+        <div class="left-content">
+
+            <h2>Building a Cleaner,<br>Greener Campus</h2>
+
+            <p>
+                Monitor waste bins, manage collections,
+                optimize routes and build a sustainable campus.
+            </p>
+
+            <div class="features">
+
+                <div class="feature">
+                    <span>♻</span>
+                    <div>
+                        <strong>Smart Waste Monitoring</strong>
+                        <small>Monitor bin levels in real time</small>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <span>🚛</span>
+                    <div>
+                        <strong>Smart Collection</strong>
+                        <small>Optimize waste collection routes</small>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <span>🌱</span>
+                    <div>
+                        <strong>Sustainability</strong>
+                        <small>Track recycling and environmental impact</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- RIGHT SIDE -->
+    <div class="login-right">
+
+        <!-- LOGIN FORM -->
+        <div id="loginSection" class="form-section">
+
+            <div class="form-header">
+                <h2>Welcome Back</h2>
+                <p>Login to your EcoCampus account</p>
+            </div>
+
+            <form id="loginForm">
+
+                <div class="input-group">
+
+                    <label for="loginEmail">Email Address</label>
+
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="loginPassword">Password</label>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            type="password"
+                            id="loginPassword"
+                            placeholder="Enter your password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            onclick="togglePassword('loginPassword', this)"
+                        >
+                            👁
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="login-options">
+
+                    <label class="remember">
+
+                        <input type="checkbox" id="rememberMe">
+
+                        <span>Remember me</span>
+
+                    </label>
+
+                    <button
+                        type="button"
+                        class="forgot-btn"
+                        onclick="showForgotPassword()"
+                    >
+                        Forgot Password?
+                    </button>
+
+                </div>
+
+
+                <button type="submit" class="primary-btn">
+                    Login
+                </button>
+
+            </form>
+
+
+            <div class="divider">
+                <span>OR</span>
+            </div>
+
+
+            <p class="switch-text">
+
+                Don't have an account?
+
+                <button
+                    type="button"
+                    class="link-btn"
+                    onclick="showRegister()"
+                >
+                    Create Account
+                </button>
+
+            </p>
+
+
+            <!-- DEMO ACCOUNTS -->
+
+            <div class="demo-section">
+
+                <h4>Demo Accounts</h4>
+
+                <div class="demo-buttons">
+
+                    <button
+                        type="button"
+                        onclick="fillAdminLogin()"
+                    >
+                        Admin Demo
+                    </button>
+
+                    <button
+                        type="button"
+                        onclick="fillUserLogin()"
+                    >
+                        User Demo
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- REGISTER FORM -->
+        <div id="registerSection" class="form-section hidden">
+
+            <div class="form-header">
+
+                <h2>Create Account</h2>
+
+                <p>
+                    Create your EcoCampus user account
+                </p>
+
+            </div>
+
+
+            <form id="registerForm">
+
+                <div class="input-group">
+
+                    <label for="registerName">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="registerName"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="registerEmail">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="registerEmail"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="registerPassword">
+                        Password
+                    </label>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            type="password"
+                            id="registerPassword"
+                            placeholder="Create a password"
+                            minlength="6"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            onclick="togglePassword('registerPassword', this)"
+                        >
+                            👁
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="confirmPassword">
+                        Confirm Password
+                    </label>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            placeholder="Confirm your password"
+                            minlength="6"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            onclick="togglePassword('confirmPassword', this)"
+                        >
+                            👁
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                    id="registerButton"
+                >
+                    Create Account
+                </button>
+
+            </form>
+
+
+            <div class="divider">
+                <span>OR</span>
+            </div>
+
+
+            <p class="switch-text">
+
+                Already have an account?
+
+                <button
+                    type="button"
+                    class="link-btn"
+                    onclick="showLogin()"
+                >
+                    Login
+                </button>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- FORGOT PASSWORD MODAL -->
+
+<div id="forgotModal" class="modal hidden">
+
+    <div class="modal-content">
+
+        <button
+            class="modal-close"
+            onclick="closeForgotPassword()"
+        >
+            ×
+        </button>
+
+        <h2>Password Reset</h2>
+
+        <p>
+            For this hackathon prototype, please contact the
+            administrator to reset your password.
+        </p>
+
+        <button
+            class="primary-btn"
+            onclick="closeForgotPassword()"
+        >
+            Close
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- MESSAGE -->
+
+<div id="messageBox" class="message-box"></div>
+
+
+<script src="login.js"></script>
+
+</body>
+</html>

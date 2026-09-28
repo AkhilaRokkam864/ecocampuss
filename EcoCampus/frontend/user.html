@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>EcoCampus Collection Dashboard</title>
+<link rel="stylesheet" href="user.css">
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><span>♻</span><div><b>EcoCampus</b><small>COLLECTION PORTAL</small></div></div>
+  <nav>
+    <button class="nav active" data-page="dashboard">⌂ <span>My Dashboard</span></button>
+    <button class="nav" data-page="collections">✓ <span>My Collections</span></button>
+    <button class="nav" data-page="nearby">⌖ <span>Nearby Bins</span></button>
+    <button class="nav" data-page="history">▤ <span>Collection History</span></button>
+    <button class="nav" data-page="report">⚠ <span>Report Issue</span></button>
+    <button class="nav" data-page="profile">♙ <span>My Profile</span></button>
+  </nav>
+  <button class="logout" id="logout">↪ Logout</button>
+</aside>
+
+<main class="content">
+<header class="topbar"><div><span class="live">● COLLECTION TEAM</span><span class="sub">Assigned campus operations</span></div><div class="profile"><div class="avatar" id="avatar">U</div><div><b id="profileName">User</b><small>Waste Collector</small></div></div></header>
+
+<section id="dashboard" class="page active">
+<div class="heading"><div><p class="eyebrow">COLLECTION STAFF</p><h1 id="welcome">Good day!</h1><p>Here are your current collection tasks.</p></div><button class="primary" id="refreshBtn">↻ Refresh</button></div>
+<div class="cards"><div class="card kpi"><span>Pending Collections</span><strong id="pending">0</strong><em>Bins at 50%+</em></div><div class="card kpi green"><span>Completed</span><strong id="completed">0</strong><em>Your collection history</em></div><div class="card kpi orange"><span>Issues Reported</span><strong id="issues">0</strong><em>Submitted by you</em></div><div class="card kpi blue"><span>Nearby Bins</span><strong id="nearbyCount">0</strong><em>Campus network</em></div></div>
+<div class="grid2">
+<div class="card next"><div class="card-title"><h2>Next Collection</h2><span class="priority">PRIORITY</span></div><div id="nextCollection"></div></div>
+<div class="card"><h2>Quick Actions</h2><div class="quick"><button data-page-link="collections">✓ View My Collections</button><button data-page-link="nearby">⌖ Check Nearby Bins</button><button data-page-link="report">⚠ Report an Issue</button></div></div>
+</div>
+<div class="card"><div class="card-title"><h2>Today's Assigned Bins</h2><button class="small" data-page-link="collections">View all</button></div><div id="todayList" class="task-list"></div></div>
+</section>
+
+<section id="collections" class="page"><div class="heading"><div><p class="eyebrow">YOUR TASKS</p><h1>My Collections</h1><p>Complete collection tasks assigned from live bin status.</p></div></div><div id="collectionCards" class="collection-cards"></div></section>
+
+<section id="nearby" class="page"><div class="heading"><div><p class="eyebrow">CAMPUS MAP</p><h1>Nearby Bins</h1><p>Live fill levels of all monitored bins.</p></div></div><div id="nearbyGrid" class="nearby-grid"></div></section>
+
+<section id="history" class="page"><div class="heading"><div><p class="eyebrow">ACTIVITY</p><h1>Collection History</h1></div></div><div class="card table-wrap"><table><thead><tr><th>Bin</th><th>Location</th><th>Completed At</th></tr></thead><tbody id="historyTable"></tbody></table></div></section>
+
+<section id="report" class="page"><div class="heading"><div><p class="eyebrow">MAINTENANCE</p><h1>Report an Issue</h1><p>Tell the admin team about a damaged or overflowing bin.</p></div></div><div class="card form-card"><form id="issueForm"><label>Bin</label><select id="issueBin"><option value="">General campus issue</option></select><label>Issue Type</label><select id="issueType"><option>Overflowing</option><option>Damaged Bin</option><option>Wrong Segregation</option><option>Blocked Access</option><option>Other</option></select><label>Description</label><textarea id="description" rows="6" placeholder="Describe the issue..." required></textarea><button class="primary">Submit Report</button></form></div></section>
+
+<section id="profile" class="page"><div class="heading"><div><p class="eyebrow">ACCOUNT</p><h1>My Profile</h1></div></div><div class="card profile-card"><div class="big-avatar" id="bigAvatar">U</div><h2 id="profileFullName"></h2><p id="profileEmail"></p><span class="role-badge">Waste Collector / User</span></div></section>
+</main>
+</div>
+<div id="toast" class="toast"></div>
+<script src="user.js"></script>
+</body>
+</html>
